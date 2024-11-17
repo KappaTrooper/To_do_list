@@ -10,10 +10,12 @@ export default function App() {
 
     setTodos((currentTodos) => {
       return [
-        ...currtodos,
-        { i: crypto.randomUUID(), title: newItem, completed: false },
+        ...currentTodos,
+        { id: crypto.randomUUID(), title: newItem, completed: false },
       ];
     });
+
+    setNewItem("")
   }
 
   console.log(todos);
@@ -34,13 +36,16 @@ export default function App() {
 
       <h1 className="header"> Todo List</h1>
       <ul className="list">
-        <li>
+        {todos.map(todo => {
+          return <li key={todo.id}>
           <label>
-            <input type="checkbox" />
-            Item 1
+            <input type="checkbox" checked={todo.completed} />
+            {todo.title}
           </label>
           <button className="btn btn-danger">Delete</button>
         </li>
+        })}
+        
       </ul>
     </>
   );
