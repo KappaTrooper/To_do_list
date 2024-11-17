@@ -2,14 +2,19 @@ import { useState } from "react";
 import "./style.css";
 
 export default function App() {
-  const [newItem, setNewItem] = useState("")
-  
+  const [newItem, setNewItem] = useState("");
+
   return (
     <>
-      <form className="new-item_form">
+      <form className="new-item-form">
         <div className="form-row">
           <label htmlFor="item">New item</label>
-          <input type="text" id="item"></input>
+          <input
+            value={newItem}
+            onChange={(e) => setNewItem(e.target.value)}
+            type="text"
+            id="item"
+          ></input>
         </div>
         <button className="btn">Add</button>
       </form>
@@ -18,7 +23,7 @@ export default function App() {
       <ul className="list">
         <li>
           <label>
-            <input type="checkbox"/>
+            <input type="checkbox" />
             Item 1
           </label>
           <button className="btn btn-danger">Delete</button>
